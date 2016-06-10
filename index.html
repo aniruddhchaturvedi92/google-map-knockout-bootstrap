@@ -4,19 +4,22 @@
 	<meta charset="utf-8">
 	<title>Map Redo</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" href="bootstrap-3.3.6-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="row" id="navbar">
-			<div class="col-lg-9 col-md-8 col-xs-6">App Name</div>
-			<div class="col-lg-3 col-md-4 col-xs-6">
-				<ul class="nav nav-tabs">
+		<div class="row">
+			<nav class="navbar">
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand">App Name Here</a>
+				</div>
+				<ul class="nav navbar-nav nav-tabs navbar-right" role="navigation">
 					<li class="active"><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-list visible-xs-inline-block"></span></a></li>
-				</ul>
-			</div>
+					<li class="visible-xs-inline-block"><a href="#"><span class="glyphicon glyphicon-list"></span></a></li>
+				</ul>				
+			</nav>
 		</div>
 		<div class="row">
 			<div class="col-lg-9 col-md-8 col-sm-12" id="map">Map</div>
@@ -40,10 +43,10 @@
 					</div>
 				</div>
 				<div class="row" id="info-min">
-					<div class="col-xs-12"><i class="glyphicon glyphicon-chevron-down"></i></div>
+					<div class="col-xs-12"><i class="glyphicon glyphicon-chevron-down pull-right"></i></div>
 				</div>			
 				<div class="row" id="info">
-					<div class="col-xs-12"><i class="glyphicon glyphicon-chevron-up"></i></div>
+					<div class="col-xs-12"><i class="glyphicon glyphicon-chevron-up pull-right"></i></div>
 				</div>
 			</div>
 		</div>
