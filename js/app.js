@@ -6,10 +6,16 @@ require(['knockout', 'viewmodel', 'domReady'], function(ko, appViewModel) {
 
 
 // TODO:
-// Make application mobile-friendly and responsive
-
+// Make infoarea collapsible, and autocollapse on small screens
+// Make search box autohide on small screens and show when search icon is clicked
+// Make 'x' in search box clear the filter
+// Show/hide list with list button on small screens
 // Automatically adjust map boundaries
-// Map marker bounces when marker or list item is clicked
+// Selected list item is styled differently on listview
+
+// Style infoarea
+// Custom markers (e.g. food and drink icon)
+
 // Tidy up variable definitions, got lots of vars at the moment
 
 
