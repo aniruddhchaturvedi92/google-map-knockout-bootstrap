@@ -6,6 +6,8 @@
 	white-space: nowrap;
 }
 
+
+
 .navbar-header {
 	float: left;
 }
@@ -14,20 +16,39 @@
 	float: right;
 }
 
+#content {
+    height: 100%;
+}
+
 #search-area {
 	background-color: red;
+    height: 10%;
 }
 
 #info{
 	background-color: blue;
+    height: 40%;
 }
 
-#list{
-	background-color: green;
+#info-min {
+    height: 5%;
 }
+
+#list-view {
+	background-color: green;
+    line-height: 1;
+    height: 45%;
+    overflow: hidden;
+}
+
+.list-group {
+    overflow: hidden;
+}
+
 
 #map{
 	background-color: yellow;
+    height: 500px;
 }
 
 #footer{
