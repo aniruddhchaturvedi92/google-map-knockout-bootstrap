@@ -2,17 +2,18 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Map Redo</title>
+	<title>Y Penty - Area Map</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="normalize.css">
-	<link rel="stylesheet" href="bootstrap-3.3.6-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="lib/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBm8Vo8PUjj2HFaPBgfwKdTTjOyBo3LY-c"></script>
 </head>
 <body>
 	<div class="container-fluid">
 		<nav class="navbar navbar-inverse">
 			<div class="navbar-header">
-				<a href="#" class="navbar-brand">App Name Here</a>
+				<a href="#" class="navbar-brand">Y Penty - Area Map</a>
 			</div>
 			<ul class="nav navbar-nav nav-pills navbar-right" role="navigation">
 				<li class="active"><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
@@ -22,23 +23,11 @@
 		<div id="list-view">
 			<div id="search-area">
 				<form class="form-group has-feedback">
-					<input id="search-box" class="form-control"></input><i class="glyphicon glyphicon-remove form-control-feedback"></i>
+					<input id="filter-input" class="form-control" placeholder="What are you looking for?" autofocus data-bind="textInput: filterInput, event: { keyup: filterMarkers }"></input><i class="glyphicon glyphicon-remove form-control-feedback"></i>
 				</form>
 			</div>	
-			<ul class="list-group">
-				<li class="list-group-item">List item</li>
-				<li class="list-group-item">List item</li>
-				<li class="list-group-item">List item</li>
-				<li class="list-group-item">List item</li>
-				<li class="list-group-item">List item</li>
-				<li class="list-group-item">List item</li>
-				<li class="list-group-item">List item</li>
-				<li class="list-group-item">List item</li>
-				<li class="list-group-item">List item</li>
-				<li class="list-group-item">List item</li>
-				<li class="list-group-item">List item</li>
-				<li class="list-group-item">List item</li>
-				<li class="list-group-item">List item</li>
+			<ul class="list-group" data-bind="foreach: filteredPlaces">
+				<li class="list-group-item" data-bind="text: name, click: $parent.selectPlace"></li>
 			</ul>
 		</div>
 			
@@ -47,20 +36,27 @@
 		</div>			
 		<div id="info">
 			<i class="glyphicon glyphicon-chevron-down pull-right"></i>
-			<p>Some info</p>
-			<p>Some info</p>
-			<p>Some info</p>
-			<p>Some info</p>
-			<p>Some info</p>
-			<p>Some info</p>
-			<p>Some info</p>
+			<h2 data-bind="text: selectedPlace().name"></h2>
+			<div data-bind="text: selectedPlace().description"></div>
+			<div id="fourSq">
+                <h3>Info from FourSquare.com</h3>
+                <div data-bind="text: fourSqData().url"></div>
+                <img data-bind="attr: { src : fourSqData().imgSrc }" alt="Top photo of this location from FourSquare" class="info-image">
+            </div>
 		</div>
-		<div id="map">
-			Map
-		</div>
+		<div id="map"></div>
 	</div>
+	<script type="text/javascript" data-main="js/common" src="lib/require.js"></script>
+    <script>
+    require(['common'], function(){
+        require(['app', 'jquery', 'bootstrap'], function(app, $){
+            var bootstrap_enabled = (typeof $().modal == 'function');
+            console.log(bootstrap_enabled);
+        });
+    });
+    </script>
 
-	<script src="jquery.min.js"></script>
-	<script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+	<!--<script src="lib/jquery.min.js"></script>
+	<script src="lib/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>-->
 </body>
 </html>
