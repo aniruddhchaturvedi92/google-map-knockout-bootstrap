@@ -1,3 +1,7 @@
+.navbar {
+    margin: 5px !important;
+}
+
 .navbar .nav .li{
 	white-space: nowrap;
 }
@@ -10,24 +14,24 @@
 	float: right;
 }
 
-#search{
-	background-color: red
+#search-area {
+	background-color: red;
 }
 
 #info{
-	background-color: blue
+	background-color: blue;
 }
 
 #list{
-	background-color: green
+	background-color: green;
 }
 
 #map{
-	background-color: yellow
+	background-color: yellow;
 }
 
 #footer{
-	background-color: gray
+	background-color: gray;
 }
 
 .navbar-right {
