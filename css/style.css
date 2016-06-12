@@ -34,7 +34,7 @@
     bottom: 0;
     left: 0;
     width: 250px;
-    height: 250px;
+    max-height: 400px;
     padding: 10px;
     overflow: scroll;
 }
@@ -53,6 +53,8 @@
 #fourSq {
     border: 2px solid;
     border-color: blue;
+    padding: 5px;
+    margin-top: 10px;
 }
 
 .info-image {
@@ -67,7 +69,7 @@
     padding-right: 20px;
     top: 0;
     right: 0;
-    height: 100%;
+    max-height: 100%;
     width: 300px;
     overflow: scroll;
     z-index: -1;
@@ -98,7 +100,17 @@
 	margin-right: 0 !important;
 }
 
+h3 {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 7px;
+}
 
+h4 {
+    font-size: 16px;
+    margin-top: 9px;
+    margin-bottom: 6px;
+}
 
 @media (max-width: 300px) {
     .navbar-header {
@@ -137,10 +149,31 @@
 	}
 }
 
+@media (max-width: 750px) {
+    #list-view {
+        max-height: 206px;
+    }
+
+    #info {
+        max-height: 200px;
+    }
+
+    .info-image {
+        max-width: 100px;
+    }
+}
+
 @media (max-width: 600px) {
     #list-view {
-        max-height: 40%;
         width: 100%;
         padding-left: 20px;
+    }
+
+    #info {
+        width: 100%;
+    }
+
+    #info-min {
+        width: 100%;
     }
 }

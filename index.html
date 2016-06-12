@@ -19,13 +19,14 @@
 				<li class="active"><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
 				<li class="visible-xs-inline-block"><a href="#"><span class="glyphicon glyphicon-list"></span></a></li>
 			</ul>				
-		</nav>		
+		</nav>
+		<div id="search-area">
+			<form class="form-group has-feedback">
+				<input id="filter-input" class="form-control" placeholder="What are you looking for?" autofocus data-bind="textInput: filterInput, event: { keyup: filterMarkers }"></input><i class="glyphicon glyphicon-remove form-control-feedback"></i>
+			</form>
+		</div>			
 		<div id="list-view">
-			<div id="search-area">
-				<form class="form-group has-feedback">
-					<input id="filter-input" class="form-control" placeholder="What are you looking for?" autofocus data-bind="textInput: filterInput, event: { keyup: filterMarkers }"></input><i class="glyphicon glyphicon-remove form-control-feedback"></i>
-				</form>
-			</div>	
+
 			<ul class="list-group" data-bind="foreach: filteredPlaces">
 				<li class="list-group-item" data-bind="text: name, click: $parent.selectPlace"></li>
 			</ul>
@@ -40,8 +41,8 @@
 			<div data-bind="text: selectedPlace().description"></div>
 			<div id="fourSq">
                 <h4>Info from FourSquare.com</h4>
-                <div data-bind="text: fourSqData().url"></div>
                 <img data-bind="attr: { src : fourSqData().imgSrc }" alt="Top photo of this location from FourSquare" class="info-image">
+                <div data-bind="text: fourSqData().url"></div>
             </div>
 		</div>
 		<div id="map"></div>
