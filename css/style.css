@@ -1,5 +1,6 @@
 .navbar {
     margin: 5px !important;
+    z-index: 3;
 }
 
 .navbar .nav .li{
@@ -22,10 +23,11 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding-top: 60px;
+    padding-top: 62px;
     padding-right: 20px;
     z-index: 1;
     width: 300px;
+    z-index: 2;
 }
 
 #info{
@@ -37,6 +39,7 @@
     max-height: 400px;
     padding: 10px;
     overflow: scroll;
+    z-index: -1;
 }
 
 #info-min {
@@ -46,7 +49,7 @@
     left: 0;
     width: 250px;
     height: 30px;
-    z-index: 99;
+    z-index: -1;
     padding: 10px;
 }
 
@@ -72,7 +75,7 @@
     max-height: 100%;
     width: 300px;
     overflow: scroll;
-    z-index: -1;
+    z-index: 0;
 }
 
 .list-group {
@@ -164,7 +167,7 @@ h4 {
 }
 
 @media (max-width: 600px) {
-    #list-view {
+    #list-view, #search-area {
         width: 100%;
         padding-left: 20px;
     }

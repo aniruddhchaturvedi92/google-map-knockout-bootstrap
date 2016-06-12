@@ -17,7 +17,7 @@
 			</div>
 			<ul class="nav navbar-nav nav-pills navbar-right" role="navigation">
 				<li class="active"><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
-				<li class="visible-xs-inline-block"><a href="#"><span class="glyphicon glyphicon-list"></span></a></li>
+				<li class="active visible-xs-inline-block" data-bind="click: toggleList"><a href="#"><span class="glyphicon glyphicon-list"></span></a></li>
 			</ul>				
 		</nav>
 		<div id="search-area">
@@ -25,7 +25,7 @@
 				<input id="filter-input" class="form-control" placeholder="What are you looking for?" autofocus data-bind="textInput: filterInput, event: { keyup: filterMarkers }"></input><i class="glyphicon glyphicon-remove form-control-feedback"></i>
 			</form>
 		</div>			
-		<div id="list-view">
+		<div id="list-view" data-bind="visible: listIsOpen">
 
 			<ul class="list-group" data-bind="foreach: filteredPlaces">
 				<li class="list-group-item" data-bind="text: name, click: $parent.selectPlace"></li>
@@ -51,8 +51,6 @@
     <script>
     require(['common'], function(){
         require(['app', 'jquery', 'bootstrap'], function(app, $){
-            var bootstrap_enabled = (typeof $().modal == 'function');
-            console.log(bootstrap_enabled);
         });
     });
     </script>

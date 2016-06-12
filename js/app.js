@@ -6,10 +6,9 @@ require(['knockout', 'viewmodel', 'domReady'], function(ko, appViewModel) {
 
 
 // TODO:
-// Make infoarea collapsible, and autocollapse on small screens
-// Make search box autohide on small screens and show when search icon is clicked
+// Make search box autohide on small screens and show when search icon is clicked (make ko obs to hold listview top padding?)
 // Make 'x' in search box clear the filter
-// Show/hide list with list button on small screens
+// Toggle active class of navbar buttons
 // Automatically adjust map boundaries
 // Selected list item is styled differently on listview
 
