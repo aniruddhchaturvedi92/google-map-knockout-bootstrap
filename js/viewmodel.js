@@ -162,6 +162,15 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 				place.fourSqData = usefulData;
 
 			}).fail(function(){console.log("error");});
+		};
+
+		self.infoIsOpen = ko.observable(true);
+		self.closeInfo = function(){
+			self.infoIsOpen(false);
+		}
+
+		self.openInfo = function(){
+			self.infoIsOpen(true);
 		}
     }
 });

@@ -40,14 +40,23 @@
 }
 
 #info-min {
-    height: 5%;
+    background-color: white;
     position: absolute;
     bottom: 0;
     left: 0;
     width: 250px;
-    height: 20px;
+    height: 30px;
     z-index: 99;
     padding: 10px;
+}
+
+#fourSq {
+    border: 2px solid;
+    border-color: blue;
+}
+
+.info-image {
+    max-width: 150px;
 }
 
 #list-view {
@@ -88,6 +97,8 @@
 .navbar-right {
 	margin-right: 0 !important;
 }
+
+
 
 @media (max-width: 300px) {
     .navbar-header {
