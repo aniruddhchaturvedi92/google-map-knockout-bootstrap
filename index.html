@@ -28,7 +28,7 @@
 		<div id="list-view" data-bind="visible: listIsOpen">
 
 			<ul class="list-group" data-bind="foreach: filteredPlaces">
-				<li class="list-group-item" data-bind="text: name, click: $parent.selectPlace"></li>
+				<li class="list-group-item" data-bind="text: name, click: $parent.selectPlace, css: { selected: name == $parent.selectedPlace().name }"></li>
 			</ul>
 		</div>
 			

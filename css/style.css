@@ -82,6 +82,11 @@
     overflow: hidden;
 }
 
+li.selected {
+    color: #9d9d9d;
+    background-color: black;
+}
+
 
 #map{
 	/*background-color: yellow;*/
