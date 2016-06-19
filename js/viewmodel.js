@@ -100,6 +100,10 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
         	});
 		});
 
+		self.clearFilter = function(){
+			self.filterInput("");
+		}
+
 		self.selectedPlace = ko.observable({ name: "", images: [""], fourSqData: { got: false, url: "" } });
 
 		self.selectPlace = function(clickedPlace){ 

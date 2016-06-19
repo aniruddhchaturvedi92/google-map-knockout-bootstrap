@@ -10,7 +10,7 @@ require(['knockout', 'viewmodel', 'domReady'], function(ko, appViewModel) {
 // Make 'x' in search box clear the filter
 // Toggle active class of navbar buttons
 // Automatically adjust map boundaries
-// Selected list item is styled differently on listview
+// Error handling
 
 // Style infoarea
 // Custom markers (e.g. food and drink icon)

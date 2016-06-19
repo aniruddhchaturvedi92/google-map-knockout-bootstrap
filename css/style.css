@@ -30,6 +30,10 @@
     z-index: 2;
 }
 
+form i.form-control-feedback {
+    pointer-events: auto;
+}
+
 #info{
 	background-color: white;
     position: absolute;
