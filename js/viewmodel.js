@@ -171,16 +171,22 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 		self.infoIsOpen = ko.observable(true);
 		self.closeInfo = function(){
 			self.infoIsOpen(false);
-		}
+		};
 
 		self.openInfo = function(){
 			self.infoIsOpen(true);
-		}
+		};
 
 		self.listIsOpen = ko.observable(true);
 		self.toggleList = function(){
 			self.listIsOpen(!self.listIsOpen());
 			console.log(self.listIsOpen());
+		};
+
+		self.searchIsOpen = ko.observable(false);
+		self.toggleSearch = function(){
+			self.searchIsOpen(!self.searchIsOpen());
+			console.log("search toggled");
 		}
     }
 });

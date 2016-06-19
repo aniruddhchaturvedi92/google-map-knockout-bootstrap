@@ -6,8 +6,6 @@ require(['knockout', 'viewmodel', 'domReady'], function(ko, appViewModel) {
 
 
 // TODO:
-// Make search box autohide on small screens and show when search icon is clicked (make ko obs to hold listview top padding?)
-// Make 'x' in search box clear the filter
 // Toggle active class of navbar buttons
 // Automatically adjust map boundaries
 // Error handling
