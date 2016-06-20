@@ -22,10 +22,10 @@
 		</nav>
 		<div id="search-area" data-bind="visible: searchIsOpen">
 			<form class="form-group has-feedback">
-				<input id="filter-input" class="form-control" placeholder="What are you looking for?" autofocus data-bind="textInput: filterInput, event: { keyup: filterMarkers }"></input><i class="glyphicon glyphicon-remove form-control-feedback" data-bind="click: clearFilter"></i>
+				<input id="filter-input" class="form-control" placeholder="What are you looking for?" autofocus data-bind="textInput: filterInput, event: { keyup: filterMarkers }"></input><i class="glyphicon glyphicon-filter form-control-feedback" data-bind="click: clearFilter, css: { filtered: filterInput() }"></i>
 			</form>
 		</div>			
-		<div id="list-view" data-bind="visible: listIsOpen, style: { 'padding-top': searchIsOpen() ? '100px' : '62px' }">
+		<div id="list-view" data-bind="visible: listIsOpen, style: { 'margin-top': searchIsOpen() ? '100px' : '62px' }, css: { filtered : filterInput() }">
 			<ul class="list-group" data-bind="foreach: filteredPlaces">
 				<li class="list-group-item" data-bind="text: name, click: $parent.selectPlace, css: { selected: name == $parent.selectedPlace().name }"></li>
 			</ul>

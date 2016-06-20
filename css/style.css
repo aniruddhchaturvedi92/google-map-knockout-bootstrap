@@ -34,6 +34,18 @@ form i.form-control-feedback {
     pointer-events: auto;
 }
 
+.glyphicon.glyphicon-filter.filtered:after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    top: 0;
+    display: block;
+    background: red;
+    left: 50%;
+    transform: translate(-50%, 0) rotate(45deg);
+}
+
 #info{
 	background-color: white;
     position: absolute;
@@ -73,17 +85,25 @@ form i.form-control-feedback {
     line-height: 1;
     position: absolute;
     /*padding-top: 100px;*/
-    padding-right: 20px;
+    margin-right: 20px;
     top: 0;
     right: 0;
     max-height: 100%;
-    width: 300px;
+    width: 280px;
     overflow: scroll;
     z-index: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+#list-view.filtered {
+    border: 1px solid red;
 }
 
 .list-group {
     overflow: hidden;
+    margin-bottom: 0;
 }
 
 li.selected {
