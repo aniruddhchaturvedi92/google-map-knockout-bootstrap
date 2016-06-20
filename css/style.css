@@ -38,12 +38,16 @@ form i.form-control-feedback {
     content: "";
     position: absolute;
     width: 2px;
-    height: 100%;
-    top: 0;
+    height: 180%;
+    top: -40%;
     display: block;
     background: red;
     left: 50%;
     transform: translate(-50%, 0) rotate(45deg);
+}
+
+.glyphicon.glyphicon-filter.indicator {
+    color: #ccc;
 }
 
 #info{

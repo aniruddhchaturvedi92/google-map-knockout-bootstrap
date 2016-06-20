@@ -16,13 +16,14 @@
 				<a href="#" class="navbar-brand">Y Penty - Area Map</a>
 			</div>
 			<ul class="nav navbar-nav nav-pills navbar-right" role="navigation">
+				<li class="active" data-bind="visible: filterInput(), click: clearFilter"><a href="#"><span class="glyphicon glyphicon-filter" data-bind="css: { filtered: filterInput() }"></span></a></li>
 				<li class="active" data-bind="click: toggleSearch"><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
 				<li class="active visible-xs-inline-block" data-bind="click: toggleList"><a href="#"><span class="glyphicon glyphicon-list"></span></a></li>
 			</ul>				
 		</nav>
 		<div id="search-area" data-bind="visible: searchIsOpen">
 			<form class="form-group has-feedback">
-				<input id="filter-input" class="form-control" placeholder="What are you looking for?" autofocus data-bind="textInput: filterInput, event: { keyup: filterMarkers }"></input><i class="glyphicon glyphicon-filter form-control-feedback" data-bind="click: clearFilter, css: { filtered: filterInput() }"></i>
+				<input id="filter-input" class="form-control" placeholder="What are you looking for?" autofocus data-bind="textInput: filterInput, event: { keyup: filterMarkers }"></input><i class="glyphicon glyphicon-filter indicator form-control-feedback" data-bind="visible: filterInput()"></i>
 			</form>
 		</div>			
 		<div id="list-view" data-bind="visible: listIsOpen, style: { 'margin-top': searchIsOpen() ? '100px' : '62px' }, css: { filtered : filterInput() }">
