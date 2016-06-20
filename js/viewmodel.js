@@ -102,6 +102,7 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 
 		self.clearFilter = function(){
 			self.filterInput("");
+			self.filterMarkers();
 		}
 
 		self.selectedPlace = ko.observable({ name: "", images: [""], fourSqData: { got: false, url: "" } });
@@ -187,6 +188,7 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 		self.toggleSearch = function(){
 			self.searchIsOpen(!self.searchIsOpen());
 			console.log("search toggled");
+			// Need to also clear filter if search is hidden
 		}
     }
 });

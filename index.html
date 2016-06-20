@@ -21,17 +21,18 @@
 				<li class="active visible-xs-inline-block" data-bind="click: toggleList"><a href="#"><span class="glyphicon glyphicon-list"></span></a></li>
 			</ul>				
 		</nav>
-		<div id="search-area" data-bind="visible: searchIsOpen">
-			<form class="form-group has-feedback">
-				<input id="filter-input" class="form-control" placeholder="What are you looking for?" autofocus data-bind="textInput: filterInput, event: { keyup: filterMarkers }"></input><i class="glyphicon glyphicon-filter indicator form-control-feedback" data-bind="visible: filterInput()"></i>
-			</form>
-		</div>			
-		<div id="list-view" data-bind="visible: listIsOpen, style: { 'margin-top': searchIsOpen() ? '100px' : '62px' }, css: { filtered : filterInput() }">
-			<ul class="list-group" data-bind="foreach: filteredPlaces">
-				<li class="list-group-item" data-bind="text: name, click: $parent.selectPlace, css: { selected: name == $parent.selectedPlace().name }"></li>
-			</ul>
+		<div id="top-box">
+			<div id="search-area" data-bind="visible: searchIsOpen">
+				<form class="form-group has-feedback">
+					<input id="filter-input" class="form-control" placeholder="What are you looking for?" autofocus data-bind="textInput: filterInput, event: { keyup: filterMarkers }"></input><i class="glyphicon glyphicon-filter indicator form-control-feedback" data-bind="visible: filterInput()"></i>
+				</form>
+			</div>
+			<div id="list-view" data-bind="visible: listIsOpen, css: { filtered : filterInput() }">
+				<ul class="list-group" data-bind="foreach: filteredPlaces">
+					<li class="list-group-item" data-bind="text: name, click: $parent.selectPlace, css: { selected: name == $parent.selectedPlace().name }"></li>
+				</ul>
+			</div>
 		</div>
-			
 		<div id="info-min" data-bind="visible: selectedPlace().name && infoIsOpen() == false">
 			<i class="glyphicon glyphicon-chevron-up pull-right" data-bind="click: openInfo"></i>
 		</div>			
