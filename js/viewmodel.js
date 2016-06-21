@@ -15,7 +15,9 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 		var initMap = function() {
 		    map = new google.maps.Map(document.getElementById('map'), {
 		        center: {lat: 52.3610647, lng: -3.7881769},
-		        zoom: 11
+		        zoom: 11,
+		        mapTypeControl: false,
+		        streetViewControl: false
 		    });
 		};
 
