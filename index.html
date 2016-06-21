@@ -35,8 +35,8 @@
 		</div>
 		<div id="info-min" data-bind="visible: selectedPlace().name && infoIsOpen() == false, click: openInfo">
 			<i class="glyphicon glyphicon-info-sign pull-left" ></i>
-			<span class="click-text">Click for more info...</span>
-			<i class="glyphicon glyphicon-resize-full pull-right"></i>
+			<span class="click-text hidden-xs-down">click for more info...</span>
+			<i class="hidden-xs-down glyphicon glyphicon-resize-full pull-right"></i>
 		</div>			
 		<div id="info" data-bind="visible: selectedPlace().name && infoIsOpen">
 			<i class="glyphicon glyphicon-resize-small pull-right" data-bind="click: closeInfo"></i>
