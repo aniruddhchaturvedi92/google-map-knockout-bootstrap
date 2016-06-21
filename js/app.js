@@ -6,8 +6,8 @@ require(['knockout', 'viewmodel', 'domReady'], function(ko, appViewModel) {
 
 
 // TODO:
-// Automatically adjust map boundaries
-// Error handling
+// Error handling: use a timeout to check if map object exists?
+// Load map and foursquare data asynchronously, and improve performance generally.
 
 // Style infoarea
 // Custom markers (e.g. food and drink icon)
