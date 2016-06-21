@@ -138,6 +138,8 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 			});
 			currentMarker.setAnimation(google.maps.Animation.BOUNCE);
 			currentMarker.infoWindow.open(map, currentMarker);
+			var latLng = currentMarker.getPosition();
+			map.panTo(latLng);
 		}
 
 		// Create an observable that holds the current foursquare data to display
