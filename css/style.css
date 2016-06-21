@@ -4,6 +4,7 @@ p {
 
 .navbar {
     margin: 5px !important;
+    border-radius: 4px;
     z-index: 3;
 }
 
@@ -17,6 +18,7 @@ p {
 
 .navbar-nav {
 	float: right;
+    margin: 0;
 }
 
 .navbar-right {
@@ -119,6 +121,7 @@ li.selected {
 #fourSq {
     border: 2px solid;
     border-color: blue;
+    border-radius: 4px;
     padding: 5px;
     margin-top: 10px;
 }
@@ -192,7 +195,7 @@ h4 {
 	}
 }
 
-@media (max-width: 750px) {
+@media (max-width: 768px) {
     #list-view {
         max-height: 140px;
     }
@@ -203,6 +206,19 @@ h4 {
 
     .info-image {
         max-width: 100px;
+    }
+
+    .navbar-brand {
+        height: 40px;
+        padding: 10px 10px;
+    }
+
+    .navbar {
+        min-height: 40px;
+    }
+
+    #top-box {
+        padding-top: 52px;
     }
 }
 
