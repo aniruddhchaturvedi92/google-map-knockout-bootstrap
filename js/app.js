@@ -6,7 +6,6 @@ require(['knockout', 'viewmodel', 'domReady'], function(ko, appViewModel) {
 
 
 // TODO:
-// Toggle active class of navbar buttons
 // Automatically adjust map boundaries
 // Error handling
 
