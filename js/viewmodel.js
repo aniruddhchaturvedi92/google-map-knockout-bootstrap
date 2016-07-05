@@ -39,6 +39,8 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 				map: map,
 				position: place.location,
 				name: place.name,
+				icon: place.icons.basic,
+				icons: [place.icons.basic, place.icons.selected]
 			});
 
 			// Create an infowindow and populate the HTML with the relevant place name
@@ -132,11 +134,15 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 		self.selectMarker = function(){
 			var currentMarker = self.selectedMarker();
 			self.markers.forEach(function(marker){
-				if (marker != currentMarker){
-					marker.setAnimation(null);
+				marker.setMap(null);
+				if (marker == currentMarker){
+					marker.icon = marker.icons[1];
 				}
+				else {
+					marker.icon = marker.icons[0];
+				}
+				marker.setMap(map);
 			});
-			currentMarker.setAnimation(google.maps.Animation.BOUNCE);
 			currentMarker.infoWindow.open(map, currentMarker);
 			var latLng = currentMarker.getPosition();
 			map.panTo(latLng);
