@@ -35,17 +35,17 @@
 		</div>
 		<div id="info-min" data-bind="visible: selectedPlace().name && infoIsOpen() == false, click: openInfo">
 			<i class="glyphicon glyphicon-info-sign pull-left" ></i>
-			<span class="click-text hidden-xs-down">click for more info...</span>
+			<span class="click-text hidden-xs-down">Click for more info...</span>
 			<i class="hidden-xs-down glyphicon glyphicon-resize-full pull-right"></i>
 		</div>			
 		<div id="info" data-bind="visible: selectedPlace().name && infoIsOpen">
 			<i class="glyphicon glyphicon-resize-small pull-right" data-bind="click: closeInfo"></i>
 			<h3 data-bind="text: selectedPlace().name"></h3>
 			<div data-bind="text: selectedPlace().description"></div>
-			<div id="fourSq">
+			<div id="fourSq" data-bind="visible: fourSqData()">
                 <h4>Info from FourSquare.com</h4>
-                <img data-bind="attr: { src : fourSqData().imgSrc }" alt="Top photo of this location from FourSquare" class="info-image">
-                <div data-bind="text: fourSqData().url"></div>
+                <img data-bind="attr: { src : fourSqData() ? fourSqData().imgSrc : null }" alt="Top photo of this location from FourSquare" class="info-image">
+                <div data-bind="text: fourSqData() ? fourSqData().url : null"></div>
             </div>
 		</div>
 		<div id="map"></div>

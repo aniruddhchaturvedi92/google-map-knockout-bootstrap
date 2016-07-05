@@ -2,6 +2,19 @@ define(function(){
 	// Create global locations array
 	// Might want to make 'type' an array to allow multiple types later, e.g. walk and historic site
 	var initialLocations = [{
+		name: "Y Penty",
+		location: {
+			lat: 52.36087,
+			lng: -3.78928
+		},
+		address: "Ty-wrth-y-Coed, Cwmystwyth, Aberystwyth, SY23 4AF",
+		type: "Home",
+		icons: {
+			basic: 'lib/icons/home-36.png',
+			selected: 'lib/icons/home-48.png'
+		},
+		description: "Where you will stay"
+	},{
 		name: "Elan Valley Visitors Centre", 
 		location: {
 			lat: 52.2694,

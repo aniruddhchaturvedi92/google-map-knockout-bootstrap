@@ -149,10 +149,7 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 		}
 
 		// Create an observable that holds the current foursquare data to display
-		self.fourSqData = ko.observable({
-			url: "url here",
-			imgSrc: ""
-		});
+		self.fourSqData = ko.observable();
 
 		// *** FOURSQUARE API ***
 
@@ -164,19 +161,24 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 		var url, VENUE_ID;
 
 		self.getFourSqData = function(place){
-			VENUE_ID = place.fourSq_VENUE_ID;
-			url = fourSqUrl + VENUE_ID + "?client_id=" + fourSqClientId + "&client_secret=" + fourSqClientSt + "&v=20160609";
-			$.getJSON(url, function(data){
-				var usefulData = {
-					url: data.response.venue.url || "No URL given",
-					imgSrc: data.response.venue.bestPhoto.prefix + "200x200" + data.response.venue.bestPhoto.suffix
-				}
-				// Set the current foursquare data
-				self.fourSqData(usefulData);
-				// And cache it in the places array
-				place.fourSqData = usefulData;
+			if (place.fourSq_VENUE_ID){
+				VENUE_ID = place.fourSq_VENUE_ID;
+				url = fourSqUrl + VENUE_ID + "?client_id=" + fourSqClientId + "&client_secret=" + fourSqClientSt + "&v=20160609";
+				$.getJSON(url, function(data){
+					var usefulData = {
+						url: data.response.venue.url || "No URL given",
+						imgSrc: data.response.venue.bestPhoto.prefix + "200x200" + data.response.venue.bestPhoto.suffix
+					}
+					// Set the current foursquare data
+					self.fourSqData(usefulData);
+					// And cache it in the places array
+					place.fourSqData = usefulData;
 
-			}).fail(function(){console.log("error");});
+				}).fail(function(){console.log("error");});
+			}
+			else {
+				self.fourSqData(null);
+			}
 		};
 
 		self.infoIsOpen = ko.observable(true);
