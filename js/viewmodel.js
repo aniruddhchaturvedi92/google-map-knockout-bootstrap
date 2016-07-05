@@ -149,7 +149,24 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 		}
 
 		// Create an observable that holds the current foursquare data to display
-		self.fourSqData = ko.observable();
+		// Set default attributes to avoid problems with binding to undefined
+		self.fourSqDefaults = {
+			url: "",
+			shortUrl: "",
+			imgSrc: "",
+			phone: "",
+			rating: "",
+			hours: {
+				status: "",
+				timeframes: [{
+					days: "",
+					segments: [{
+						renderedTime: ""
+					}]
+				}]
+			}
+		}
+		self.fourSqData = ko.observable(self.fourSqDefaults);
 
 		// *** FOURSQUARE API ***
 
@@ -166,9 +183,14 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 				url = fourSqUrl + VENUE_ID + "?client_id=" + fourSqClientId + "&client_secret=" + fourSqClientSt + "&v=20160609";
 				$.getJSON(url, function(data){
 					var usefulData = {
-						url: data.response.venue.url || "No URL given",
-						imgSrc: data.response.venue.bestPhoto.prefix + "200x200" + data.response.venue.bestPhoto.suffix
+						url: data.response.venue.url || "",
+						shortUrl: data.response.venue.shortUrl,
+						imgSrc: data.response.venue.bestPhoto.prefix + "200x200" + data.response.venue.bestPhoto.suffix,
+						phone: data.response.venue.contact.phone || "",
+						rating: data.response.venue.rating || "",
+						hours: data.response.venue.hours || self.fourSqDefaults.hours
 					}
+					console.log(usefulData.hours);
 					// Set the current foursquare data
 					self.fourSqData(usefulData);
 					// And cache it in the places array
@@ -177,7 +199,7 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 				}).fail(function(){console.log("error");});
 			}
 			else {
-				self.fourSqData(null);
+				self.fourSqData(self.fourSqDefaults);
 			}
 		};
 

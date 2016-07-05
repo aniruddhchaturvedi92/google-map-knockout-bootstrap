@@ -6,12 +6,16 @@ require(['knockout', 'viewmodel', 'domReady'], function(ko, appViewModel) {
 
 
 // TODO:
-// Autofocus to search box when it appears, not when the page loads.
 // Error handling: use a timeout to check if map object exists?
 // Load map and foursquare data asynchronously, and improve performance generally.
+// Bug: infoarea remains populated with info from previously selected place, even after it has been filtered out of the list.
 
 // Style infoarea
-// Custom markers (e.g. food and drink icon)
+// Custom markers (e.g. food and drink icon): glyphicon-cutlery, glyphicon-tree-conifer, glyphicon-tower (for historical stuff)
+// glyphicon-map-marker, glyphicon-eye-open, glyphicon-home
+// Small icon 50 px dark grey #333
+// Selected icon 60 px green #009973
+
 
 // Tidy up variable definitions, got lots of vars at the moment
 

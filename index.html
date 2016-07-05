@@ -41,11 +41,22 @@
 		<div id="info" data-bind="visible: selectedPlace().name && infoIsOpen">
 			<i class="glyphicon glyphicon-resize-small pull-right" data-bind="click: closeInfo"></i>
 			<h3 data-bind="text: selectedPlace().name"></h3>
+			<div data-bind="text: selectedPlace().address"></div>
 			<div data-bind="text: selectedPlace().description"></div>
-			<div id="fourSq" data-bind="visible: fourSqData()">
+			<!-- Set visibility of foursquare box based on shortUrl as this attribute is not optional -->
+			<div id="fourSq" data-bind="visible: fourSqData().shortUrl">
                 <h4>Info from FourSquare.com</h4>
-                <img data-bind="attr: { src : fourSqData() ? fourSqData().imgSrc : null }" alt="Top photo of this location from FourSquare" class="info-image">
-                <div data-bind="text: fourSqData() ? fourSqData().url : null"></div>
+                <div data-bind="template: { name: 'foursq-template', data: fourSqData }"></div>
+	            <script type="text/html" id="foursq-template">
+	            	<div data-bind="text: hours.status"></div>
+	            	<div data-bind="foreach: hours.timeframes">
+	            		<p><span data-bind="text: days + ': '"></span><span data-bind="foreach: segments"><span data-bind="text: renderedTime + ' '"</span></span></p>
+	            	</div>
+	            	<div data-bind="text: rating ? 'Rating: ' + rating : ''"></div>
+	                <a data-bind="attr: { href : shortUrl, target : '_blank' }"><img data-bind="attr: { src : imgSrc }" alt="Top photo of this location from FourSquare" class="info-image"></a>
+	                <div data-bind="text: url"></div>
+	                <div data-bind="text: phone"></div>
+	            </script>
             </div>
 		</div>
 		<div id="map"></div>
