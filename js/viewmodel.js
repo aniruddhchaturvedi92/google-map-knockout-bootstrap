@@ -39,7 +39,7 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 				map: map,
 				position: place.location,
 				name: place.name,
-				icon: place.icons.basic,
+				icon: place.icons.basic || marker,
 				icons: [place.icons.basic, place.icons.selected]
 			});
 
