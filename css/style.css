@@ -108,11 +108,21 @@ li.selected {
     z-index: -1;
 }
 
-#info{
+#info {
     background-color: white;
     max-height: 400px;
     padding: 10px;
     overflow: scroll;
+}
+
+#info .address {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.status {
+    font-size: 12px;
+    font-weight: bold;
 }
 
 #info-min {

@@ -75,6 +75,8 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 				// First set visibility to false, and close all infowindows
 				marker.setVisible(false);
 				marker.infoWindow.close(map, marker);
+				// !! Also need to close the info area if the currently selected place gets filtered out of the list
+				//self.infoIsOpen(false);
 				// Then if it corresponds to a place in the filtered list of places, set visibility back to true
 				self.filteredPlaces().forEach(function(place){
 					if (marker.name == place.name){
@@ -109,7 +111,8 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 			self.filterMarkers();
 		}
 
-		self.selectedPlace = ko.observable({ name: "", images: [""], fourSqData: { got: false, url: "" } });
+		self.selectedPlaceDefault = { name: "", images: [""], fourSqData: { got: false, url: "" } };
+		self.selectedPlace = ko.observable(self.selectedPlaceDefault);
 
 		self.selectPlace = function(clickedPlace){ 
 			if (!clickedPlace.fourSqData){
@@ -190,7 +193,6 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 						rating: data.response.venue.rating || "",
 						hours: data.response.venue.hours || self.fourSqDefaults.hours
 					}
-					console.log(usefulData.hours);
 					// Set the current foursquare data
 					self.fourSqData(usefulData);
 					// And cache it in the places array
