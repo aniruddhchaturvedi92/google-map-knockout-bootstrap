@@ -99,7 +99,7 @@ li.selected {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 280px;
+    max-width: 400px;
     border-width: 2px 2px 0 0;
     border-style: solid;
     border-color: #009973;
@@ -120,8 +120,11 @@ li.selected {
     font-style: italic;
 }
 
-.status {
+#info-text {
     font-size: 12px;
+}
+
+#info-text.status {
     font-weight: bold;
 }
 
@@ -158,10 +161,25 @@ span.click-text {
     border-radius: 4px;
     padding: 5px;
     margin-top: 10px;
+    background-color: #ccc;
+    overflow: hidden;
+}
+
+#info-text {
+    float: right;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+h4 {
+    margin-left: 10px;
 }
 
 .info-image {
     max-width: 150px;
+    display: inline-block;
+    float: left;
+    margin: 10px 0;
 }
 
 #map{
