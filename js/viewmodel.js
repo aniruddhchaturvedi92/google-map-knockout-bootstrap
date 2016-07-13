@@ -157,6 +157,7 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 		// Create an observable that holds the current foursquare data to display
 		// Set default attributes to avoid problems with binding to undefined
 		self.fourSqDefaults = {
+			VENUE_ID: null,
 			url: "",
 			shortUrl: "",
 			imgSrc: "",
@@ -172,7 +173,25 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 				}]
 			}
 		}
-		self.fourSqData = ko.observable(self.fourSqDefaults);
+		
+		self.fourSqData = ko.observable({
+			VENUE_ID: null,
+			url: "",
+			shortUrl: "",
+			imgSrc: "",
+			phone: "",
+			rating: "",
+			hours: {
+				status: "",
+				timeframes: [{
+					days: "",
+					segments: [{
+						renderedTime: ""
+					}]
+				}]
+			}
+		});
+		
 
 		// *** FOURSQUARE API ***
 
@@ -181,30 +200,69 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 		// NEED TO SECURE THIS
 		var fourSqClientSt = "X11PKDW53IBYLDHFXFXE12PL2N0F4NC3A5LMLXY2HCWFFQ4P";
 		
-		var url, VENUE_ID;
+		var requestUrl;
 
 		self.getFourSqData = function(place){
+			self.fourSqResponse = {
+			VENUE_ID: null,
+			url: "",
+			shortUrl: "",
+			imgSrc: "",
+			phone: "",
+			rating: "",
+			hours: {
+				status: "",
+				timeframes: [{
+					days: "",
+					segments: [{
+						renderedTime: ""
+					}]
+				}]
+			}
+		}
 			if (place.fourSq_VENUE_ID){
-				VENUE_ID = place.fourSq_VENUE_ID;
-				url = fourSqUrl + VENUE_ID + "?client_id=" + fourSqClientId + "&client_secret=" + fourSqClientSt + "&v=20160609";
-				$.getJSON(url, function(data){
-					var usefulData = {
-						url: data.response.venue.url || "",
-						shortUrl: data.response.venue.shortUrl,
-						imgSrc: data.response.venue.bestPhoto.prefix + "200x200" + data.response.venue.bestPhoto.suffix,
-						phone: data.response.venue.contact.phone || "",
-						rating: data.response.venue.rating || "",
-						hours: data.response.venue.hours || self.fourSqDefaults.hours
-					}
+				self.fourSqResponse.VENUE_ID = place.fourSq_VENUE_ID;
+				requestUrl = fourSqUrl + self.fourSqResponse.VENUE_ID + "?client_id=" + fourSqClientId + "&client_secret=" + fourSqClientSt + "&v=20160609";
+				$.getJSON(requestUrl, function(data){
+					self.fourSqResponse.url = data.response.venue.url || "";
+					self.fourSqResponse.shortUrl = data.response.venue.shortUrl;
+					self.fourSqResponse.imgSrc = data.response.venue.bestPhoto.prefix + "200x200" + data.response.venue.bestPhoto.suffix;
+					self.fourSqResponse.phone = data.response.venue.contact.phone || "";
+					self.fourSqResponse.rating = data.response.venue.rating || "";
+					self.fourSqResponse.hours = data.response.venue.hours || self.fourSqDefaults.hours;
+					
 					// Set the current foursquare data
-					self.fourSqData(usefulData);
+					self.fourSqData(self.fourSqResponse);
+					console.log(self.fourSqResponse);
+					console.log(self.fourSqDefaults);
 					// And cache it in the places array
-					place.fourSqData = usefulData;
+					place.fourSqData = self.fourSqResponse;
 
-				}).fail(function(){console.log("error");});
+				}).fail(function(){
+					// This sets the current foursquare data to defaults except that VENUE_ID is filled in, so foursquare box
+					// will be visible but contain an error message
+					self.fourSqData(self.fourSqResponse);
+					console.log("FourSquare API call failed.");
+				});
 			}
 			else {
-				self.fourSqData(self.fourSqDefaults);
+				self.fourSqData({
+			VENUE_ID: null,
+			url: "",
+			shortUrl: "",
+			imgSrc: "",
+			phone: "",
+			rating: "",
+			hours: {
+				status: "",
+				timeframes: [{
+					days: "",
+					segments: [{
+						renderedTime: ""
+					}]
+				}]
+			}
+		});
 			}
 		};
 

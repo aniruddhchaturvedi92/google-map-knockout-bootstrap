@@ -43,8 +43,8 @@
 			<h3 data-bind="text: selectedPlace().name"></h3>
 			<div class="address" data-bind="text: selectedPlace().address"></div>
 			<div data-bind="text: selectedPlace().description"></div>
-			<!-- Set visibility of foursquare box based on shortUrl as this attribute is not optional -->
-			<div id="fourSq" data-bind="visible: fourSqData().shortUrl">
+			<!-- Set visibility of foursquare box based on VENUE_ID. This makes the box visible as long as the API is called. -->
+			<div id="fourSq" data-bind="visible: fourSqData().VENUE_ID">
                 <h4>Info from FourSquare.com</h4>
                 <div data-bind="template: { name: 'foursq-template', data: fourSqData }"></div>
 	            <script type="text/html" id="foursq-template">
