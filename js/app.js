@@ -8,7 +8,7 @@ require(['knockout', 'viewmodel', 'domReady'], function(ko, appViewModel) {
 // TODO:
 // Error handling: use a timeout to check if map object exists?
 // Load map and foursquare data asynchronously, and improve performance generally.
-// Bug: infoarea now minimizes when selected place is filtered out. But now have confusion between info being closed vs minimized
+// Bug: infoarea remains populated with info from previously selected place, even after it has been filtered out of the list.
 // Bug: marker icons 404 not found on gh-pages. Wait 10 mins and see...
 
 // Style infoarea

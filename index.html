@@ -48,19 +48,14 @@
                 <h4>Info from FourSquare.com</h4>
                 <div data-bind="template: { name: 'foursq-template', data: fourSqData }"></div>
 	            <script type="text/html" id="foursq-template">
-	                <div class="col-md-6"><a data-bind="attr: { href : shortUrl, target : '_blank' }"><img data-bind="attr: { src : imgSrc }" alt="Top photo of this location from FourSquare" class="info-image"></a>
-	                </div>
-	            	<div id="info-text" class="col-md-6">
-		            	<div data-bind="text: hours.status ? hours.status + ' today' : '', style: { 'font-weight': 'bold', 'color': 'red' }">
-		            	</div>
-		            	<div data-bind="foreach: hours.timeframes">
-		            		<p><span data-bind="text: days ? days + ': ' : 'No opening hours available' "></span><span data-bind="foreach: segments"><span data-bind="text: renderedTime + ' '"</span></span></p>
-		            	</div>
-		            	<p data-bind="text: rating ? 'FourSquare rating: ' + rating : ''">
-		            	</p>
-		                <p><a data-bind="attr: { href : url, target : '_blank' }"><div data-bind="text: url"></div></a></p>
-		                <p data-bind="text: phone ? 'Phone: ' + phone : ''"></p>
+	            	<div data-bind="text: hours.status, style: { 'font-size': '12px', 'font-weight': 'bold' }"></div>
+	            	<div data-bind="foreach: hours.timeframes, style: { 'font-size': '12px' }">
+	            		<p><span data-bind="text: days ? days + ': ' : '' "></span><span data-bind="foreach: segments"><span data-bind="text: renderedTime + ' '"</span></span></p>
 	            	</div>
+	            	<div data-bind="text: rating ? 'Rating: ' + rating : ''"></div>
+	                <a data-bind="attr: { href : shortUrl, target : '_blank' }"><img data-bind="attr: { src : imgSrc }" alt="Top photo of this location from FourSquare" class="info-image"></a>
+	                <a data-bind="attr: { href : url, target : '_blank' }"><div data-bind="text: url"></div></a>
+	                <div data-bind="text: phone"></div>
 	            </script>
             </div>
 		</div>

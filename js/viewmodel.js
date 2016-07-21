@@ -72,22 +72,19 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 			// (Could use a library utility function for this, rather than two nested forEach loops?)
 			self.markers.forEach(function(marker){
 				var infoWindowOpen = isInfoWindowOpen(marker.infoWindow);
-				// First set visibility to false, and close all infowindows and the info area
+				// First set visibility to false, and close all infowindows
 				marker.setVisible(false);
 				marker.infoWindow.close(map, marker);
-				self.infoIsOpen(false);
-				
+				// !! Also need to close the info area if the currently selected place gets filtered out of the list
+				//self.infoIsOpen(false);
+				// Then if it corresponds to a place in the filtered list of places, set visibility back to true
 				self.filteredPlaces().forEach(function(place){
-					// If a marker corresponds to a place in the filtered list of places, set visibility back to true
 					if (marker.name == place.name){
 						marker.setVisible(true);
 						if (infoWindowOpen){
 							marker.infoWindow.open(map, marker);
-						}	
-					}
-					// And if the filtered list still contains the selected place, reopen the info area
-					if (selectedPlace().name == place.name){
-						self.infoIsOpen(true);
+						}
+						
 					}
 				})
 			})
