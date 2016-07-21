@@ -203,13 +203,13 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 			}
 		};
 
-		self.infoIsOpen = ko.observable(true);
-		self.closeInfo = function(){
-			self.infoIsOpen(false);
+		self.infoIsExpanded = ko.observable(true);
+		self.minimizeInfo = function(){
+			self.infoIsExpanded(false);
 		};
 
-		self.openInfo = function(){
-			self.infoIsOpen(true);
+		self.maximizeInfo = function(){
+			self.infoIsExpanded(true);
 		};
 
 		self.listIsOpen = ko.observable(true);
