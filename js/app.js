@@ -9,9 +9,7 @@ require(['knockout', 'viewmodel', 'domReady'], function(ko, appViewModel) {
 // Error handling: use a timeout to check if map object exists?
 // Load map and foursquare data asynchronously, and improve performance generally.
 // Bug: infoarea now minimizes when selected place is filtered out. But now have confusion between info being closed vs minimized
-// Make date in foursquare api call url current date
-// Need different behaviour when there is no foursquare entry for a particular place (blue box just doesn't appear)
-// vs when you make a foursquare api call and it fails (blue box appears with error message).
+// Bug: marker icons 404 not found on gh-pages. Wait 10 mins and see...
 
 // Style infoarea
 // Custom markers (e.g. food and drink icon): glyphicon-cutlery, glyphicon-tree-conifer, glyphicon-tower (for historical stuff)
