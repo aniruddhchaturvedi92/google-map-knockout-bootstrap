@@ -203,6 +203,7 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 			}
 		};
 
+		// These relate to the info area (not infoWindow)
 		self.infoIsExpanded = ko.observable(true);
 		self.minimizeInfo = function(){
 			self.infoIsExpanded(false);
@@ -212,17 +213,23 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 			self.infoIsExpanded(true);
 		};
 
+		// Figures out whether info area should be visible, depending on whether the currently selected place is in the
+		// filtered list or not
+		self.infoAreaVisible = ko.computed(function(){
+        	return ko.utils.arrayFilter(self.filteredPlaces(), function(place) {
+        		return self.selectedPlace().name == place.name;
+        	}).length;
+		})
+
 		self.listIsOpen = ko.observable(true);
 		self.toggleList = function(){
 			self.listIsOpen(!self.listIsOpen());
-			console.log(self.listIsOpen());
 		};
 
 		self.searchIsOpen = ko.observable(false);
 		self.toggleSearch = function(){
 			self.searchIsOpen(!self.searchIsOpen());
-			console.log("search toggled");
-			// Need to also clear filter if search is hidden
+			// Need to also clear filter if search is hidden or grey out the search button
 		}
     }
 });
