@@ -75,7 +75,6 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 				// First set visibility to false, and close all infowindows and the info area
 				marker.setVisible(false);
 				marker.infoWindow.close(map, marker);
-				self.infoIsOpen(false);
 				
 				self.filteredPlaces().forEach(function(place){
 					// If a marker corresponds to a place in the filtered list of places, set visibility back to true
@@ -84,10 +83,6 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 						if (infoWindowOpen){
 							marker.infoWindow.open(map, marker);
 						}	
-					}
-					// And if the filtered list still contains the selected place, reopen the info area
-					if (selectedPlace().name == place.name){
-						self.infoIsOpen(true);
 					}
 				})
 			})
