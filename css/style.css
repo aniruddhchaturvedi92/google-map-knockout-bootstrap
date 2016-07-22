@@ -115,6 +115,11 @@ li.selected {
     overflow: scroll;
 }
 
+#info {
+    font-size: 10px;
+    font-style: italic;
+}
+
 #info .address {
     font-size: 12px;
     font-style: italic;

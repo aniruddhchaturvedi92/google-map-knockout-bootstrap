@@ -10,7 +10,7 @@ require(['knockout', 'viewmodel', 'domReady'], function(ko, appViewModel) {
 // Load map and foursquare data asynchronously, and improve performance generally.
 
 // Desirable: Fix active state of search icon (list icon works) and add a disabled state for when the filter is active.
-
+// Hyperlink URL in foursquare data
 
 // Custom markers (e.g. food and drink icon): glyphicon-cutlery, glyphicon-tree-conifer, glyphicon-tower (for historical stuff)
 // glyphicon-map-marker, glyphicon-eye-open, glyphicon-home

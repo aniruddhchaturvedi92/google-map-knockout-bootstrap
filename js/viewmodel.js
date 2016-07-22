@@ -165,7 +165,8 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 						renderedTime: ""
 					}]
 				}]
-			}
+			},
+			errorMessage: ""
 		}
 		self.fourSqData = ko.observable(self.fourSqDefaults);
 
@@ -179,27 +180,41 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 		var url, VENUE_ID;
 
 		self.getFourSqData = function(place){
+			// Check whether the place has a foursquare entry (those that do have a venue ID in our locations array)
 			if (place.fourSq_VENUE_ID){
 				VENUE_ID = place.fourSq_VENUE_ID;
+				// Create custom url for the API call
 				url = fourSqUrl + VENUE_ID + "?client_id=" + fourSqClientId + "&client_secret=" + fourSqClientSt + "&v=20160609";
+				// API call
 				$.getJSON(url, function(data){
+					// Take the bits of the data we want and store them in a variable
 					var usefulData = {
 						url: data.response.venue.url || "",
 						shortUrl: data.response.venue.shortUrl,
 						imgSrc: data.response.venue.bestPhoto.prefix + "200x200" + data.response.venue.bestPhoto.suffix,
 						phone: data.response.venue.contact.phone || "",
 						rating: data.response.venue.rating || "",
-						hours: data.response.venue.hours || self.fourSqDefaults.hours
+						hours: data.response.venue.hours || self.fourSqDefaults.hours,
+						errorMessage: ""
 					}
-					// Set the current foursquare data
+					// Now set the current foursquare data
 					self.fourSqData(usefulData);
 					// And cache it in the places array
 					place.fourSqData = usefulData;
 
-				}).fail(function(){console.log("error");});
+				}).fail(function(){
+					// Use jquery extend to make a deep copy without changing fourSqDefaults
+					var usefulData = $.extend(true, {}, self.fourSqDefaults);
+					usefulData.errorMessage = "Couldn't get data from FourSquare.";
+					self.fourSqData(usefulData);
+					console.log("Error fetching FourSquare data");
+					console.log(self.fourSqDefaults);
+				});
 			}
+			// If there is no foursquare entry for the place, empty the current entry
 			else {
 				self.fourSqData(self.fourSqDefaults);
+				console.log(self.fourSqDefaults);
 			}
 		};
 
@@ -229,7 +244,7 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 		self.searchIsOpen = ko.observable(false);
 		self.toggleSearch = function(){
 			self.searchIsOpen(!self.searchIsOpen());
-			// Need to also clear filter if search is hidden or grey out the search button
+			// Should also clear filter if search is hidden or grey out the search button while filter is active?
 		}
     }
 });

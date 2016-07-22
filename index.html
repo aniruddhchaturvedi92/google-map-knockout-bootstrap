@@ -44,13 +44,14 @@
 			<div class="address" data-bind="text: selectedPlace().address"></div>
 			<div data-bind="text: selectedPlace().description"></div>
 			<!-- Set visibility of foursquare box based on shortUrl as this attribute is not optional -->
-			<div id="fourSq" data-bind="visible: fourSqData().shortUrl">
+			<div id="fourSq" data-bind="visible: fourSqData().shortUrl || fourSqData().errorMessage">
                 <h4>Info from FourSquare.com</h4>
                 <div data-bind="template: { name: 'foursq-template', data: fourSqData }"></div>
 	            <script type="text/html" id="foursq-template">
-	                <div class="col-md-6"><a data-bind="attr: { href : shortUrl, target : '_blank' }"><img data-bind="attr: { src : imgSrc }" alt="Top photo of this location from FourSquare" class="info-image"></a>
+	            	<div id="error" data-bind="text: errorMessage"></div>
+	                <div id="4sq-image" class="col-md-6" data-bind="visible: !errorMessage"><a data-bind="attr: { href : shortUrl, target : '_blank' }"><img data-bind="attr: { src : imgSrc }" alt="Top photo of this location from FourSquare" class="info-image"></a>
 	                </div>
-	            	<div id="info-text" class="col-md-6">
+	            	<div id="info-text" class="col-md-6" data-bind="visible: !errorMessage">
 		            	<div data-bind="text: hours.status ? hours.status + ' today' : '', style: { 'font-weight': 'bold', 'color': 'red' }">
 		            	</div>
 		            	<div data-bind="foreach: hours.timeframes">
