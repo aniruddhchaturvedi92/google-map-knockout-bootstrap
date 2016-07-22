@@ -1,18 +1,18 @@
-define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, $) {
+define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, locations, $, map) {
     return function appViewModel() {
     	var self = this;
     	// Fetch initial array of locations from locations.js
     	var places = locations.getLocations();
     
     	// *** GOOGLE MAPS ***
-		var map;
+		//var map;
 		// Store all the map markers in an array
 		self.markers = [];
 
 		// Helper HTML for the infowindow contents
 		var HTMLinfoWindow = '<div class="info-window">%data%</div>';
 
-		var initMap = function() {
+		/*var initMap = function() {
 		    map = new google.maps.Map(document.getElementById('map'), {
 		        center: {lat: 52.3610647, lng: -3.7881769},
 		        zoom: 11,
@@ -21,7 +21,7 @@ define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, 
 		    });
 		};
 
-		initMap();
+		initMap();*/
 
 		// Calls the createMapMarker function for each place in the places array
 		function pinPoster(places){

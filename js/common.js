@@ -12,6 +12,8 @@ requirejs.config({
 		domReady: 'lib/domReady',
 		app: 'js/app',
 		locations: 'js/locations',
-		viewmodel: 'js/viewmodel'
+		viewmodel: 'js/viewmodel',
+		map: 'js/map',
+		async: 'lib/async'
 	}
 });

@@ -13,7 +13,7 @@ define(function(){
 			basic: 'lib/icons/home-36.png',
 			selected: 'lib/icons/home-48.png'
 		},
-		description: "Where you will stay"
+		description: "This is where you'll be staying"
 	},{
 		name: "Elan Valley Visitors Centre", 
 		location: {
