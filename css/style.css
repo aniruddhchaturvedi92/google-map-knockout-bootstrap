@@ -8,7 +8,7 @@ p {
     z-index: 3;
 }
 
-.navbar .nav .li{
+.navbar .nav .li {
 	white-space: nowrap;
 }
 
@@ -40,10 +40,6 @@ p {
     float: right;
     z-index: 1;
     width: 280px;
-}
-
-form i.form-control-feedback {
-    pointer-events: auto;
 }
 
 .form-group {
@@ -187,7 +183,7 @@ h4 {
     margin: 10px 0;
 }
 
-#map{
+#map {
     position: absolute;
     top: 0;
     right: 0;
@@ -198,7 +194,7 @@ h4 {
     z-index: -2;
 }
 
-#footer{
+#footer {
 	background-color: gray;
 }
 
@@ -247,7 +243,7 @@ h4 {
         padding-top: 10px;
         padding-bottom: 10px;
     }
-    .collapse.in{
+    .collapse.in {
   		display:block !important;
 	}
 }
