@@ -7,7 +7,6 @@ require(['knockout', 'viewmodel', 'domReady'], function(ko, appViewModel) {
 
 
 // TODO:
-// Error handling: use a timeout to check if map object exists?
 // Load map and foursquare data asynchronously, and improve performance generally.
 
 // Desirable: Fix active state of search icon (list icon works) and add a disabled state for when the filter is active.
@@ -17,9 +16,6 @@ require(['knockout', 'viewmodel', 'domReady'], function(ko, appViewModel) {
 // glyphicon-map-marker, glyphicon-eye-open, glyphicon-home
 // Small icon 50 px dark grey #333
 // Selected icon 60 px green #009973
-
-
-// Tidy up variable definitions, got lots of vars at the moment
 
 
 // List of actual places...
