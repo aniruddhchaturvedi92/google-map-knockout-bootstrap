@@ -69,6 +69,9 @@
 	<script data-main="js/common" src="lib/require.js"></script>
     <script>
     var map;
+    function googleError() {
+    	alert("There was a problem with Google Maps. Please refresh the browser to try again.");
+    }
     function initMap() {
 	    require(['common'], function(){
 	        require(['knockout', 'viewmodel', 'jquery', 'bootstrap'], function(ko, appViewModel, $){
@@ -83,6 +86,6 @@
 	        });
 	    };
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBm8Vo8PUjj2HFaPBgfwKdTTjOyBo3LY-c&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBm8Vo8PUjj2HFaPBgfwKdTTjOyBo3LY-c&callback=initMap" async defer onerror="googleError()"></script>
 </body>
 </html>
