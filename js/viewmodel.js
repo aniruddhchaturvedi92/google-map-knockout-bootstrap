@@ -25,8 +25,8 @@ define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, loca
 
 		// Calls the createMapMarker function for each place in the places array
 		function pinPoster(places){
-			for (var place in places) {		
-				createMapMarker(places[place]);
+			for (var i=0; i<places.length; i++) {		
+				createMapMarker(places[i]);
 			}
 		}
 
