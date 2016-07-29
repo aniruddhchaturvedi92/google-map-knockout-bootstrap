@@ -1,4 +1,5 @@
 require(['knockout', 'viewmodel', 'domReady'], function(ko, appViewModel) {
+	'use strict';
     ko.applyBindings(new appViewModel());
 });
 

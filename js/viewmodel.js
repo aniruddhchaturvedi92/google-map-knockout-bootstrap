@@ -12,9 +12,6 @@ define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, loca
 		// Create a single infowindow instance, which we can open in the relevant place with the relevant content later
 		self.infoWindow = new google.maps.InfoWindow();
 
-		// Helper HTML for the infowindow contents
-		var HTMLinfoWindow = '<div class="info-window">%data%</div>';
-
 		/*var initMap = function() {
 		    map = new google.maps.Map(document.getElementById('map'), {
 		        center: {lat: 52.3610647, lng: -3.7881769},
@@ -80,11 +77,11 @@ define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, loca
 							self.infoWindow.open(map, marker);
 						}	
 					}
-				})
-			})
+				});
+			});
 			// Allow default event handling
 			return true;
-		}
+		};
 
 		// *** KNOCKOUT ***
 
@@ -96,14 +93,14 @@ define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, loca
 		self.filteredPlaces = ko.computed(function(){
         	return ko.utils.arrayFilter(self.observablePlaces(), function(place) {
             	return (( place.name.toLowerCase().indexOf(self.filterInput().toLowerCase()) != -1 ) || 
-            		(place.type.toLowerCase().indexOf(self.filterInput().toLowerCase()) != -1))
+            		(place.type.toLowerCase().indexOf(self.filterInput().toLowerCase()) != -1));
         	});
 		});
 
 		self.clearFilter = function(){
 			self.filterInput("");
 			self.filterMarkers();
-		}
+		};
 
 		self.selectedPlaceDefault = { name: "", images: [""], fourSqData: { got: false, url: "" } };
 		self.selectedPlace = ko.observable(self.selectedPlaceDefault);
@@ -144,7 +141,7 @@ define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, loca
 			self.infoWindow.open(map, currentMarker);
 			var latLng = currentMarker.getPosition();
 			map.panTo(latLng);
-		}
+		};
 
 		// Create an observable that holds the current foursquare data to display
 		// Set default attributes to avoid problems with binding to undefined
@@ -164,7 +161,7 @@ define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, loca
 				}]
 			},
 			errorMessage: ""
-		}
+		};
 		self.fourSqData = ko.observable(self.fourSqDefaults);
 
 		// *** FOURSQUARE API ***
@@ -193,7 +190,7 @@ define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, loca
 						rating: data.response.venue.rating || "",
 						hours: data.response.venue.hours || self.fourSqDefaults.hours,
 						errorMessage: ""
-					}
+					};
 					// Now set the current foursquare data
 					self.fourSqData(usefulData);
 					// And cache it in the places array
@@ -231,7 +228,7 @@ define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, loca
         	return ko.utils.arrayFilter(self.filteredPlaces(), function(place) {
         		return self.selectedPlace().name == place.name;
         	}).length;
-		})
+		});
 
 		self.listIsOpen = ko.observable(true);
 		self.toggleList = function(){
@@ -242,8 +239,8 @@ define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, loca
 		self.toggleSearch = function(){
 			self.searchIsOpen(!self.searchIsOpen());
 			// Should also clear filter if search is hidden or grey out the search button while filter is active?
-		}
-    }
+		};
+    };
 });
 
 

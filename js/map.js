@@ -1,4 +1,4 @@
-define(['async!https://maps.googleapis.com/maps/api/js?key=AIzaSyBm8Vo8PUjj2HFaPBgfwKdTTjOyBo3LY-c&sensor=false!callback'], function() {
+define(['async!https://maps.googleapis.com/maps/api/js?key=AIzaSyBm8Vo8PUjj2HFaPBgfwKdTTjOyBo3LY-c&callback'], function() {
     // Google Maps API and all its dependencies will be loaded here.
     // Add error handling/timeout
     

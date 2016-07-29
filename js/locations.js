@@ -104,7 +104,7 @@ define(function(){
 		},
 		description: "Deli/cafe",
 		fourSq_VENUE_ID: "4bf27bbfa32e20a14d3cd557"
-	}]
+	}];
 
 	return {
 		getLocations: function() { 
