@@ -208,13 +208,13 @@ define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, loca
 					usefulData.errorMessage = "Couldn't get data from FourSquare.";
 					self.fourSqData(usefulData);
 					console.log("Error fetching FourSquare data");
-					console.log(self.fourSqDefaults);
 				});
 			}
 			// If there is no foursquare entry for the place, empty the current entry
 			else {
-				self.fourSqData(self.fourSqDefaults);
-				console.log(self.fourSqDefaults);
+				var usefulData = $.extend(true, {}, self.fourSqDefaults);
+				usefulData.errorMessage = "No FourSquare entry for this location.";
+				self.fourSqData(usefulData);
 			}
 		};
 
