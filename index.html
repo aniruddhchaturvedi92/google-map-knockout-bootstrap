@@ -9,12 +9,12 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<div class="container-fluid">
+	<main class="container-fluid">
 		<nav class="navbar navbar-inverse">
 			<div class="navbar-header">
 				<a href="#" class="navbar-brand">Y Penty - Area Map</a>
 			</div>
-			<ul class="nav navbar-nav nav-pills navbar-right" role="navigation">
+			<ul class="nav navbar-nav nav-pills navbar-right" role="tablist">
 				<li data-bind="visible: filterInput(), click: clearFilter"><a href="#"><span class="glyphicon glyphicon-filter" data-bind="css: { filtered: filterInput() }"></span></a></li>
 				<li data-bind="click: toggleSearch, css: { active: searchIsOpen() }"><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
 				<li class="visible-xs-inline-block" data-bind="click: toggleList, css: { active: listIsOpen() }"><a href="#"><span class="glyphicon glyphicon-list"></span></a></li>
@@ -23,7 +23,7 @@
 		<div id="top-box">
 			<div id="search-area" data-bind="visible: searchIsOpen">
 				<form class="form-group has-feedback">
-					<input id="filter-input" class="form-control" placeholder="What are you looking for?" data-bind="textInput: filterInput, hasFocus: searchIsOpen(), event: { keyup: filterMarkers }"></input><i class="glyphicon glyphicon-filter indicator form-control-feedback" data-bind="visible: filterInput()"></i>
+					<input id="filter-input" class="form-control" type="text" placeholder="What are you looking for?" data-bind="textInput: filterInput, hasFocus: searchIsOpen(), event: { keyup: filterMarkers }"><i class="glyphicon glyphicon-filter indicator form-control-feedback" data-bind="visible: filterInput()"></i>
 				</form>
 			</div>
 			<div id="list-view" data-bind="visible: listIsOpen, css: { filtered : filterInput() }">
@@ -46,7 +46,7 @@
 			<div id="fourSq" data-bind="visible: fourSqData().shortUrl || fourSqData().errorMessage">
                 <h4>Info from FourSquare.com</h4>
                 <div data-bind="template: { name: 'foursq-template', data: fourSqData }"></div>
-	            <script type="text/html" id="foursq-template">
+	            <script id="foursq-template">
 	            	<div id="error" data-bind="text: errorMessage"></div>
 	                <div id="4sq-image" class="col-md-6" data-bind="visible: !errorMessage"><a data-bind="attr: { href : shortUrl, target : '_blank' }"><img data-bind="attr: { src : imgSrc }" alt="Top photo of this location from FourSquare" class="info-image"></a>
 	                </div>
@@ -65,8 +65,8 @@
             </div>
 		</div>
 		<div id="map"></div>
-	</div>
-	<script type="text/javascript" data-main="js/common" src="lib/require.js"></script>
+	</main>
+	<script data-main="js/common" src="lib/require.js"></script>
     <script>
     require(['common'], function(){
         require(['app', 'jquery', 'bootstrap'], function(app, $){
