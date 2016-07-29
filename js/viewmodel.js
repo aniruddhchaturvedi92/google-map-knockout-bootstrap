@@ -9,6 +9,9 @@ define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, loca
 		// Store all the map markers in an array
 		self.markers = [];
 
+		// Create a single infowindow instance, which we can open in the relevant place with the relevant content later
+		self.infoWindow = new google.maps.InfoWindow();
+
 		// Helper HTML for the infowindow contents
 		var HTMLinfoWindow = '<div class="info-window">%data%</div>';
 
@@ -43,19 +46,13 @@ define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, loca
 				icons: [place.icons.basic, place.icons.selected]
 			});
 
-			// Create an infowindow and populate the HTML with the relevant place name
-			var infoWindow = new google.maps.InfoWindow({
-				content: HTMLinfoWindow.replace("%data%", place.name),
-			});
-
 			// Open the infowindow when a marker is clicked
-			google.maps.event.addListener(marker, 'click', function(){
+			marker.addListener('click', function(){
 				self.selectPlace(place);
-				infoWindow.open(map, marker);			
+				self.infoWindow.open(map, marker);			
 			});
 
-			// Associate the infoWindow with its marker, and add the marker to the markers array
-			marker.infoWindow = infoWindow;		
+			// Add the marker to the markers array
 			self.markers.push(marker);
 		}
 
@@ -71,17 +68,16 @@ define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, loca
 			// In the knockout filteredPlaces array
 			// (Could use a library utility function for this, rather than two nested forEach loops?)
 			self.markers.forEach(function(marker){
-				var infoWindowOpen = isInfoWindowOpen(marker.infoWindow);
+				var infoWindowOpen = isInfoWindowOpen(self.infoWindow);
 				// First set visibility to false, and close all infowindows and the info area
 				marker.setVisible(false);
-				marker.infoWindow.close(map, marker);
 				
 				self.filteredPlaces().forEach(function(place){
 					// If a marker corresponds to a place in the filtered list of places, set visibility back to true
 					if (marker.name == place.name){
 						marker.setVisible(true);
 						if (infoWindowOpen){
-							marker.infoWindow.open(map, marker);
+							self.infoWindow.open(map, marker);
 						}	
 					}
 				})
@@ -113,6 +109,7 @@ define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, loca
 		self.selectedPlace = ko.observable(self.selectedPlaceDefault);
 
 		self.selectPlace = function(clickedPlace){ 
+			self.infoWindow.setContent('<div>' + clickedPlace.name + '</div>');
 			if (!clickedPlace.fourSqData){
 				self.getFourSqData(clickedPlace);
 				self.selectedPlace(clickedPlace);		
@@ -144,7 +141,7 @@ define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, loca
 				}
 				marker.setMap(map);
 			});
-			currentMarker.infoWindow.open(map, currentMarker);
+			self.infoWindow.open(map, currentMarker);
 			var latLng = currentMarker.getPosition();
 			map.panTo(latLng);
 		}

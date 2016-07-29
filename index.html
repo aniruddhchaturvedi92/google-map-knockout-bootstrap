@@ -46,7 +46,7 @@
 			<div id="fourSq" data-bind="visible: fourSqData().shortUrl || fourSqData().errorMessage">
                 <h4>Info from FourSquare.com</h4>
                 <div data-bind="template: { name: 'foursq-template', data: fourSqData }"></div>
-	            <script id="foursq-template">
+	            <script id="foursq-template" type="text/html">
 	            	<div id="error" data-bind="text: errorMessage"></div>
 	                <div id="4sq-image" class="col-md-6" data-bind="visible: !errorMessage"><a data-bind="attr: { href : shortUrl, target : '_blank' }"><img data-bind="attr: { src : imgSrc }" alt="Top photo of this location from FourSquare" class="info-image"></a>
 	                </div>
