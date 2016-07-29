@@ -1,4 +1,4 @@
-define(['knockout', 'locations', 'jquery', 'map', 'domReady'], function(ko, locations, $, map) {
+define(['knockout', 'locations', 'jquery', 'domReady'], function(ko, locations, $) {
     return function appViewModel() {
     	var self = this;
     	// Fetch initial array of locations from locations.js
